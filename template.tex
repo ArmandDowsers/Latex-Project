@@ -1,0 +1,238 @@
+\documentclass[10pt,a4paper]{article}
+
+% Encodage et langue
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+% Couleurs
+\usepackage[table,usenames,dvipsnames]{xcolor}
+
+% Graphiques et légendes
+\usepackage{graphicx}
+\usepackage{caption}
+
+% NiceMatrix
+\usepackage{nicematrix}
+
+% Maths
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Mise en page
+\usepackage{geometry}
+
+% Entêtes et pied de page
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+% Forest
+\usepackage{forest}
+
+% Hyperliens
+\usepackage{hyperref}
+
+% TikZ
+\usepackage{tikz}
+\usetikzlibrary{patterns.meta}
+\usetikzlibrary{
+  arrows.meta,
+  shapes.geometric,
+  calc,
+  intersections,
+  patterns,
+  positioning,
+  shapes.misc,
+  fadings,
+  through,
+  decorations.pathreplacing
+}
+
+\begin{document}
+\begin{titlepage}
+\newcommand{\doctitle}{\blockchain}
+
+\centering
+\vspace*{4cm}
+{\huge \textbf{\doctitle}}\vfill
+
+\vspace*{12cm}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Rédacteur} & \textbf{Vérificateur} & \textbf{Approbateur} \\
+\hline
+& & \\
+\hline
+\end{tabular}
+
+\vspace{0.5cm}
+\noindent\rule{10cm}{0.4pt}
+\vspace{1cm}
+\begin{flushright}
+\begin{center}
+Version : 1.0 \hspace{1cm} Titre : \doctitle \hspace{1cm} Réf : DOC-001
+\end{center}
+\end{flushright}
+
+\end{titlepage}
+
+\newpage
+\author{Quentin ANÈS}
+\title{Analyse statique}
+
+%\geometry{hmargin=2.5cm,vmargin=2cm}
+
+\pagestyle{fancy}
+
+\definecolor{ColorOne}{named}{MidnightBlue}
+\definecolor{ColorTwo}{named}{Dandelion}
+\definecolor{ColorThree}{named}{Plum}
+
+\fancyhead[L]{}
+\fancyhead[C]{Analyse statique}
+\fancyhead[R]{}
+
+\renewcommand{\footrulewidth}{1pt}
+\fancyfoot[C]{\text{page \thepage /\pageref{LastPage}}} 
+\fancyfoot[L]{\includegraphics[width = 0.08\linewidth]{./images/dowsers_logo.png}}
+\fancyfoot[R]{\today}
+
+\begin{center}
+\includegraphics[width = 0.5\linewidth]{./images/dowsers_logo_signature.png}
+\end{center}
+
+\section{Introduction}
+Le projet d'\href{https://fr.wikipedia.org/wiki/Analyse_statique_de_programmes}{analyse statique} repose sur la détection de motif permettant la correspondance avec les codes des smart-contracts\footnote{Les contrats intelligents (en anglais : smart contracts) sont des protocoles informatiques qui facilitent, vérifient et exécutent la négociation ou l'exécution d'un contrat sous forme de code informatique.} étudiés.
+
+\section{Analyse statique}
+\subsection{Contexte}
+L'analyse statique prend essentiellement en entrée le code source à analyser.
+Le langage principal sur lequel les motifs sont élaborées est \href{https://soliditylang.org/}{Solidity}\includegraphics[width = 0.03\linewidth]{./images/solidity_logo.png}.
+Cette analyse permet de vérifier l'inclusion de risques dans le code sources à partir d'une base de risques modélisés par Dowsers de manière quasi instantanée.
+Cette base de risques est alimentée par la spécification des langages, les retours d'expérience.
+\\
+\\
+\begin{center}
+\textbf{Dépôt} : \url{https://github.com/Dowsers/tarkastus_backend}\\
+\end{center}
+
+La base de données de risques modélisées à ce jour est présentée dans le tableau ci-dessous:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline 
+$Verification\ implementees$ & $H$ & $M$ & $L$ & $G$ & $NC$\\ 
+\hline 
+64 & 5 & 12 & 13 & 19 & 13\\ 
+\hline 
+\end{tabular}
+\end{center}
+
+\subsection{Objectifs}
+Les objectifs portent sur plusieurs points:
+\begin{enumerate}
+\item Amélioration continue de l'outil.
+\item Enrichissement continue de la base de vérifications.
+\item Ouverture à d'autre techniques de vérification portant sur le code compilé, métadonnées, arbre de la syntaxe abstraite...
+\item Intégration d'un décompilateur \href{https://soliditylang.org/}{Solidity}\includegraphics[width = 0.03\linewidth]{./images/solidity_logo.png}.
+\item Ouverture aux langages \href{https://www.rust-lang.org/fr/}{Rust}\includegraphics[width = 0.03\linewidth]{./images/rust-logo-blk.png}, \href{https://www.cairo-lang.org/}{Cairo}\includegraphics[width = 0.03\linewidth]{./images/cairo-logo-square.png}, \href{https://webassembly.org/}{WebAssembly}\includegraphics[width = 0.03\linewidth]{./images/web-assembly-icon-128px.png}.
+\end{enumerate}
+
+\newpage
+\subsection{Organisation fonctionnelle}
+\begin{center}
+\begin{forest}
+    for tree={draw,edge={Turned Square[open]}-}
+    [tarkastus
+        [Base de risques (4. Properties), {fill=blue!20}]
+        [Smart Contract (1. Collect), for tree={edge=-}
+        		[Analyse statique (5. Prove \& 7. Classify)
+        			[ Notation standard Dowsers (6. Score)
+        				[ Production de rapport ]
+        			]
+        		]
+        ]
+    ]
+\end{forest}
+\end{center}
+
+\subsubsection{tarkastus}
+Le module tarkastus est le principale lanceur des différentes analyses. Il agrège et organise les différentes étapes du logiciel.
+
+\subsubsection{Base de risques (4. Properties)}
+Le module tarkastus est le principale lanceur des différentes analyses. Il agrège et organise les différentes étapes du logiciel.
+
+\subsection{Planification}
+\tikzstyle{descript} = [text = black,align=center, minimum height=1.8cm, align=center, outer sep=0pt,font = \footnotesize]
+\tikzstyle{activity} =[align=center,outer sep=1pt]
+
+\begin{tikzpicture}[very thick, black]
+\small
+
+%% Coordinates
+\coordinate (O) at (-1,0);
+\coordinate (P1) at (4,0);
+\coordinate (P2) at (8,0);
+\coordinate (P3) at (12,0);
+\coordinate (F) at (13,0);
+\coordinate (E1) at (5,0);
+\coordinate (E2) at (0.5,0);
+
+%% Filled regions
+\fill[color=ColorOne!20] rectangle (O) -- (P1) -- ($(P1)+(0,1)$) -- ($(O)+(0,1)$);
+%\path [pattern color=ColorOne, pattern=north east lines, line width = 1pt, very thick] rectangle ($(O)+(0.5,0)$) -- ($(O)+(2,0)$) -- ($(O)+(2,1)$) -- ($(O)+(0.5,1)$);
+\fill[color=ColorTwo!20] rectangle (P1) -- (P2) -- ($(P2)+(0,1)$) -- ($(P1)+(0,1)$);
+\shade[left color=ColorThree, right color=white] rectangle (P2) -- (P3) -- ($(P3)+(0,1)$) -- ($(P2)+(0,1)$);
+
+%% Text inside filled regions
+\draw ($(P1)+(-2.5,0.5)$) node[activity,ColorOne] {Démonstrateur alpha};
+\draw ($(P2)+(-2,0.5)$) node[activity,ColorTwo] {Démonstrateur beta};
+\draw ($(P3)+(-2,0.5)$) node[activity,ColorThree] {Perfectionnement};
+
+%% Description
+\node[descript,fill=ColorOne!15,text=ColorOne](D1) at ($(P1)+(-2,-2.5)$) {%
+    \textbf{Where}\\
+    Base de risques (4.Properties)\\
+    A.Statique (5.Prove \& 7.Classify)\\
+    Notation (6. Score)\\
+    Automatisation rapports
+};
+\node[descript,fill=ColorTwo!15,text=ColorTwo](D2) at ($(P2)+(-2,-2.5)$) {%
+    \textbf{Where}\\
+    Smart Contract (1. Collect)\\
+    Compilation solidity\\
+    A.Algorithmique
+};
+\node[descript,fill=ColorThree!15,text=ColorThree](D3) at ($(P3)+(-2,-2.5)$) {%
+    \textbf{Where}\\
+    Performance +\\
+    Base risques +\\
+    Langages +\\
+};
+
+%% Events
+\draw[<-,thick,color=black] ($(E1)+(0,0.1)$) -- ($(E1)+(0,1.5)$)
+  node [above=0pt,align=center,black] {Award Banque de France\\ Campus Cyber};
+
+%% Arrows
+\path[->,color=ColorOne] ($(P1)+(0,-0.1)$) edge [out=-90, in=130]  ($(D1)+(0,1)$);
+\path[->,color=ColorTwo] ($(P2)+(-1,-0.1)$) edge [out=-90, in=130]  ($(D2)+(0,1)$);
+\path[->,color=ColorThree] ($(P3)+(-1,-0.1)$) edge [out=-70, in=90]  ($(D3)+(0,1)$);
+
+%% Arrow
+\draw[->] (O) -- (F);
+
+%% Ticks
+\foreach \x in {0,2,...,12}
+  \draw(\x cm,3pt) -- (\x cm,-3pt);
+
+%% Labels
+\foreach \i \j in {0/T2 2023,4/T1 2024,8/T4 2024,12/T2 2025} {
+  \draw (\i,0) node[below=3pt] {\j} ;
+}
+\end{tikzpicture}
+
+\bibliographystyle{alpha}
+\bibliography{analyse_statique_bib}
+
+\end{document}
