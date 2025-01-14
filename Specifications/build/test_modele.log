@@ -1,0 +1,58 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.11.6)  20 NOV 2024 15:42
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**./test_modele.tex
+(test_modele.tex
+LaTeX2e <2024-11-01>
+L3 programming layer <2024-10-09>
+
+(C:\Users\Quentin Anès\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+Document Class: report 2024/06/29 v1.4n Standard LaTeX document class
+
+(C:\Users\Quentin Anès\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count196
+\c@chapter=\count197
+\c@section=\count198
+\c@subsection=\count199
+\c@subsubsection=\count266
+\c@paragraph=\count267
+\c@subparagraph=\count268
+\c@figure=\count269
+\c@table=\count270
+\abovecaptionskip=\skip49
+\belowcaptionskip=\skip50
+\bibindent=\dimen141
+)
+(C:\Users\Quentin Anès\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.s
+ty
+Package: inputenc 2024/02/08 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+)
+
+! LaTeX Error: File `int-act.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.8 \usepackage
+               {textcomp}	% common special chars^^M
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 289 strings out of 473702
+ 4309 string characters out of 5715594
+ 389622 words of memory out of 5000000
+ 23440 multiletter control sequences out of 15000+600000
+ 558069 words of font info for 36 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 35i,0n,38p,174b,36s stack positions out of 10000i,1000n,20000p,200000b,200000s
+!  ==> Fatal error occurred, no output PDF file produced!

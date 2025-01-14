@@ -1,0 +1,209 @@
+\documentclass[a4paper,10pt]{article}
+
+% -- COMMANDES injectées depuis le JSON --
+\newcommand{\specificationDID}{}
+\newcommand{\version}{}
+\newcommand{\languageChange}{}
+\newcommand{\blockchain}{}
+\newcommand{\name}{}
+\newcommand{\criticity}{}
+\newcommand{\pattern}{}
+\newcommand{\conditionalPattern}{}
+\newcommand{\descriptionChange}{}
+\newcommand{\recommendation}{}
+\newcommand{\gasSaving}{}
+\newcommand{\impact}{}
+\newcommand{\startLineModifierChange}{}
+\newcommand{\endLineModifierChange}{}
+\newcommand{\category}{}
+\newcommand{\specificationEN}{}
+\newcommand{\specificationMATH}{}
+\newcommand{\contractType}{}
+\newcommand{\risk}{}
+\newcommand{\scenario}{}
+\newcommand{\subScenario}{}
+\newcommand{\property}{}
+
+% -- Encodage et langue --
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+
+% -- Couleurs --
+\usepackage[table,usenames,dvipsnames]{xcolor}
+
+% -- Graphiques et légendes --
+\usepackage{graphicx}
+\usepackage{caption}
+
+% -- NiceMatrix --
+\usepackage{nicematrix}
+
+% -- Maths --
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% -- Mise en page --
+\usepackage{geometry}
+\geometry{margin=2cm}
+
+% -- Entêtes et pieds de page --
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{1pt}
+
+% -- Forest --
+\usepackage{forest}
+
+% -- TikZ --
+\usepackage{tikz}
+\usetikzlibrary{%
+  patterns.meta,
+  arrows.meta,
+  shapes.geometric,
+  calc,
+  intersections,
+  patterns,
+  positioning,
+  shapes.misc,
+  fadings,
+  through,
+  decorations.pathreplacing
+}
+
+\fancyhead[L]{}
+\fancyhead[C]{Static Analyze}
+\fancyhead[R]{}
+\fancyfoot[C]{page \thepage /\pageref{LastPage}}
+\fancyfoot[L]{\includegraphics[width=0.08\linewidth]{./images/dowsers_logo.png}}
+\fancyfoot[R]{\today}
+
+\title{Static Analyze}
+
+\begin{document}
+
+\begin{center}
+  \includegraphics[width=0.5\linewidth]{./images/dowsers_logo_signature.png}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+  {\huge \textbf{Allstars contract}}
+\end{center}
+
+\vspace{1cm}
+
+\begin{center}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Editor} & \textbf{Checker} & \textbf{Approver} \\
+    \hline
+     &  &  \\
+    \hline
+  \end{tabular}
+\end{center}
+
+\vspace{14cm}
+
+\begin{center}
+  Version : 1.0 \hspace{1cm} Title : Allstars contract \hspace{1cm} Ref : DOC-001
+\end{center}
+
+\newpage
+
+
+\pagestyle{fancy}
+
+\begin{center}
+  \includegraphics[width=0.5\linewidth]{./images/dowsers_logo_signature.png}
+\end{center}
+
+\vspace{1,5cm}
+
+\section{Introduction}
+The \href{https://en.wikipedia.org/wiki/Static_program_analysis}{static analyze} project uses pattern detection to match the codes of the
+smart contracts.
+
+\section{Identifier and Data}
+
+\begin{tabular}{p{0.25\textwidth} p{0.7\textwidth}}
+\textbf{Version}                & \version \\
+\vspace{0,05cm}
+\textbf{Specification DID}      & \specificationDID \\
+\end{tabular}
+
+\bigskip
+
+\section{Technical Informations} 
+\begin{tabular}{p{0.25\textwidth} p{0.7\textwidth}}
+\textbf{Language}               & \languageChange \\
+\vspace{0,05cm}
+\textbf{Blockchain}             & \blockchain \\
+\vspace{0,05cm}
+\textbf{Name of Contract}       & \name \\
+\end{tabular}
+\bigskip
+
+\section{Criticity and Classification}
+\begin{tabular}{p{0.25\textwidth} p{0.7\textwidth}}
+\textbf{Criticity}              & \criticity \\
+\vspace{0,05cm}
+\textbf{Category}               & \category \\
+\vspace{0,05cm}
+\textbf{Risk}                   & \risk \\
+\vspace{0,05cm}
+\textbf{Recommendation}         & \recommendation \\
+\end{tabular}
+\bigskip
+
+\section{Scenarios and Property}
+\begin{tabular}{p{0.25\textwidth} p{0.7\textwidth}}
+\textbf{Scenario}               & \scenario \\
+\vspace{0,05cm}
+\textbf{Subscenario}            & \subScenario \\
+\vspace{0,05cm}
+\textbf{Property}               & \property \\
+\end{tabular}
+\bigskip
+
+\newpage
+
+\begin{center}
+  \includegraphics[width=0.5\linewidth]{./images/dowsers_logo_signature.png}
+\end{center}
+
+\vspace{1cm}
+
+\section{Analyze of specification}
+\begin{tabular}{p{0.25\textwidth} p{0.7\textwidth}}
+\textbf{English}                & \specificationEN \\
+\vspace{0,05cm}
+\textbf{Math}                   & \specificationMATH \\
+\vspace{0,05cm}
+\textbf{Type of Contract}       & \contractType \\
+\vspace{0,05cm}
+\textbf{Pattern}                & \pattern \\
+\vspace{0,05cm}
+\textbf{Conditional Pattern}    & \conditionalPattern \\
+\end{tabular}
+\bigskip
+
+\section{Description and impact}
+\begin{tabular}{p{0.25\textwidth} p{0.7\textwidth}}
+\textbf{Description}            & \descriptionChange \\
+\vspace{0,05cm}
+\textbf{Gas}                    & \gasSaving \\
+\vspace{0,05cm}
+\textbf{Impact}                 & \impact \\
+\vspace{0,05cm}
+\textbf{Start Line Modifier}    & \startLineModifierChange \\
+\vspace{0,05cm}
+\textbf{End Line Modifier}      & \endLineModifierChange \\
+\end{tabular}
+\bigskip
+
+\end{document}
